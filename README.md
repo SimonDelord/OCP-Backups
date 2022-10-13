@@ -41,3 +41,6 @@ Delete the app (oc delete project wordpress)
 ### step 8 
 Restore using
 Oc apply -f restore.yaml
+
+
+A quick demo of this activity is available here - https://youtu.be/czONI4EaowA
