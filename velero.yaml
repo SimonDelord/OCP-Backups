@@ -1,0 +1,34 @@
+apiVersion: oadp.openshift.io/v1alpha1
+kind: DataProtectionApplication
+metadata:
+  name: example-velero
+  namespace: openshift-adp
+spec:
+  configuration:
+    velero:
+      defaultPlugins:
+        - openshift
+        - aws
+    restic:
+      enable: true
+  backupLocations:
+    - name: default
+      velero:
+        provider: aws
+        default: true
+        objectStorage:
+          bucket: BUCKET_NAME
+          prefix: "velero"
+        config:
+          region: AWS_REGION
+          profile: "default"
+        credential:
+          key: cloud
+          name: cloud-credentials
+  snapshotLocations:
+    - name: default
+      velero:
+        provider: aws
+        config:
+          region: AWS_REGION
+          profile: "default"
